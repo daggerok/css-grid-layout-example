@@ -1,0 +1,26 @@
+group: edge
+
+language: node_js
+
+node_js:
+  - 6
+  - 7
+  - 8
+
+install: true
+
+before_script:
+  - npm i -g yarn npm-check-updates
+
+script:
+  - yarn -i
+  - yarn predeploy
+  - if [ -f npm-debug.log ]; then cat npm-debug.log; fi
+  - ncu -u
+  - rm -rf yarn.lock
+  - yarn predeploy
+
+cache:
+  directories:
+    - node_modules/
+    - $HOME/.npm

@@ -1,0 +1,39 @@
+{
+  "name": "css-grid-layout-example",
+  "version": "0.0.1",
+  "description": "CSS Grid Layout",
+  "main": "index.html",
+  "author": "daggerok",
+  "license": "MIT",
+  "devDependencies": {
+    "gh-pages": "1.0.0",
+    "livereload": "0.6.2",
+    "ncp": "2.0.0",
+    "npm-run-all": "4.1.1",
+    "rimraf": "2.6.2",
+    "serve": "6.1.0"
+  },
+  "scripts": {
+    "start": "npm-run-all -p start:*",
+    "start:serve": "serve --cors --single --port 8000 --ignore 'node_modules,.idea' ./app/",
+    "start:livereload": "livereload",
+    "predeploy": "yarn -i; npm-run-all predeploy:*",
+    "predeploy:bash": "bash ./gh-pages/predeploy.bash ./app/index.html",
+    "predeploy:404": "ncp ./app/index.html ./app/404.html",
+    "predeploy:nojekyll": "touch ./app/.nojekyll",
+    "deploy": "gh-pages --dist ./app --src '**/*' --branch gh-pages --dotfiles=true -m \"Github Pages $(date +%Y-%m-%d) deployment\"",
+    "postdeploy": "npm-run-all -p postdeploy:*",
+    "postdeploy:bash": "bash ./gh-pages/postdeploy.bash ./app/index.html",
+    "postdeploy:clean": "rimraf -rf ./app/.nojekyll ./app/404.html ./app/index.html-e"
+  },
+  "livereload": {
+    "exclusions": [
+      "bower_components",
+      "node_modules",
+      "*.json",
+      "README.*",
+      "yarn.lock"
+    ]
+  },
+  "homepage": "http://daggerok.github.io/css-grid-layout-example"
+}
