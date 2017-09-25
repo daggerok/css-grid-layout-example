@@ -18,12 +18,14 @@
     "start:serve": "serve --cors --single --port 8000 --ignore 'node_modules,.idea' ./app/",
     "start:livereload": "livereload",
     "predeploy": "yarn -i; npm-run-all predeploy:*",
-    "predeploy:bash": "bash ./gh-pages/predeploy.bash ./app/index.html",
+    "predeploy:bash-index": "bash ./gh-pages/predeploy.bash ./app/index.html",
+    "predeploy:bash-about": "bash ./gh-pages/predeploy.bash ./app/about.html",
     "predeploy:404": "ncp ./app/index.html ./app/404.html",
     "predeploy:nojekyll": "touch ./app/.nojekyll",
     "deploy": "gh-pages --dist ./app --src '**/*' --branch gh-pages --dotfiles=true -m \"Github Pages $(date +%Y-%m-%d) deployment\"",
     "postdeploy": "npm-run-all -p postdeploy:*",
-    "postdeploy:bash": "bash ./gh-pages/postdeploy.bash ./app/index.html",
+    "postdeploy:bash-index": "bash ./gh-pages/postdeploy.bash ./app/index.html",
+    "postdeploy:bash-about": "bash ./gh-pages/postdeploy.bash ./app/about.html",
     "postdeploy:clean": "rimraf -rf ./app/.nojekyll ./app/404.html ./app/index.html-e"
   },
   "livereload": {
