@@ -18,16 +18,18 @@
     "start": "npm-run-all -p start:*",
     "start:serve": "serve --cors --single --port 8000 --ignore 'node_modules,.idea' ./app/",
     "start:livereload": "livereload",
-    "predeploy": "yarn -i; npm-run-all predeploy:*",
-    "predeploy:bash-index": "bash ./gh-pages/predeploy.bash ./app/index.html",
-    "predeploy:bash-about": "bash ./gh-pages/predeploy.bash ./app/about.html",
-    "predeploy:404": "ncp ./app/index.html ./app/404.html",
-    "predeploy:nojekyll": "touch ./app/.nojekyll",
-    "deploy": "gh-pages --dist ./app --src '**/*' --branch gh-pages --dotfiles=true -m \"Github Pages $(date +%Y-%m-%d) deployment\"",
-    "postdeploy": "npm-run-all -p postdeploy:*",
-    "postdeploy:bash-index": "bash ./gh-pages/postdeploy.bash ./app/index.html",
-    "postdeploy:bash-about": "bash ./gh-pages/postdeploy.bash ./app/about.html",
-    "postdeploy:clean": "rimraf -rf ./app/.nojekyll ./app/404.html ./app/index.html-e"
+    "serve": "npm-run-all serve:*",
+    "serve:build": "npm-run-all serve:build:*",
+    "serve:build:index": "parcel build ./app/index.html --no-cache --public-url ./ --out-dir ./dist/",
+    "serve:build:about": "parcel build ./app/about.html --no-cache --public-url ./ --out-dir ./dist/",
+    "serve:serve": "serve --cors --single --port 5000 ./dist/",
+    "pregithub": "npm-run-all pregithub:*",
+    "pregithub:index": "parcel build ./app/index.html --no-cache --public-url '/css-grid-layout-example/' --out-dir ./dist/",
+    "pregithub:about": "parcel build ./app/about.html --no-cache --public-url '/css-grid-layout-example/' --out-dir ./dist/",
+    "pregithub:404": "ncp ./dist/index.html ./dist/404.html",
+    "pregithub:nojekyll": "touch ./dist/.nojekyll",
+    "github": "gh-pages --dist ./dist --src '**/*' --branch gh-pages --dotfiles=true -m \"Github Pages $(date +%Y-%m-%d) deployment\"",
+    "parcel": "parcel ./app/index.html --port 3000 --no-cache --out-dir ./build"
   },
   "livereload": {
     "exclusions": [
