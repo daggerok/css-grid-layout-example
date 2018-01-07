@@ -6,6 +6,8 @@ node_js:
   - 6
   - 7
   - 8
+  - 9
+  - lts/*
 
 install: true
 
@@ -14,11 +16,11 @@ before_script:
 
 script:
   - yarn -i
-  - yarn predeploy
+  - yarn pregithub
   - if [ -f npm-debug.log ]; then cat npm-debug.log; fi
   - ncu -u
   - rm -rf yarn.lock
-  - yarn predeploy
+  - yarn pregithub
 
 cache:
   directories:

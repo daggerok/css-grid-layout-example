@@ -1,9 +1,14 @@
 = CSS Grid Layout image:https://travis-ci.org/daggerok/css-grid-layout-example.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/css-grid-layout-example"]
 
-link:https://www.youtube.com/watch?v=jV8B24rSN5o[TODO...]
+Using
 
 ----
 yarn -i
 yarn start
 yarn predeploy
 ----
+
+links:
+
+. https://parceljs.org/[parcel - coolest web application bundler ever]
+. link:https://www.youtube.com/watch?v=jV8B24rSN5o[TODO...]

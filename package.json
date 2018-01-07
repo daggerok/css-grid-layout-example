@@ -29,7 +29,7 @@
     "pregithub:404": "ncp ./dist/index.html ./dist/404.html",
     "pregithub:nojekyll": "touch ./dist/.nojekyll",
     "github": "gh-pages --dist ./dist --src '**/*' --branch gh-pages --dotfiles=true -m \"Github Pages $(date +%Y-%m-%d) deployment\"",
-    "parcel": "parcel ./app/index.html --port 3000 --no-cache --out-dir ./build"
+    "dev": "parcel ./app/index.html --port 3000 --out-dir ./build"
   },
   "livereload": {
     "exclusions": [
