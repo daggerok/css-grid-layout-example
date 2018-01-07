@@ -1,11 +1,15 @@
 = CSS Grid Layout image:https://travis-ci.org/daggerok/css-grid-layout-example.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/css-grid-layout-example"]
 
-Using
-
+.using parcel
 ----
 yarn -i
-yarn start
-yarn predeploy
+yarn dev
+----
+
+.deoloy
+----
+yarn -i
+yarn github
 ----
 
 links:

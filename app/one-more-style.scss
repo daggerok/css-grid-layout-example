@@ -1,0 +1,9 @@
+$col1: 60%;
+$col2: 40%;
+$gap: 0.3em;
+
+.wrapper {
+  display: grid;
+  grid-template-columns: $col1 $col2;
+  grid-gap: $gap;
+}
