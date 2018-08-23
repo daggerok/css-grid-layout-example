@@ -1,28 +1,32 @@
-group: edge
-
 language: node_js
-
-node_js:
-  - 6
-  - 7
-  - 8
-  - 9
-  - lts/*
-
+node_js: lts/*
 install: true
-
 before_script:
-  - npm i -g yarn npm-check-updates
-
+- npm i -g yarn npm-check-updates
 script:
-  - yarn -i
-  - yarn pregithub
-  - if [ -f npm-debug.log ]; then cat npm-debug.log; fi
-  - ncu -u
-  - rm -rf yarn.lock
-  - yarn pregithub
-
+- yarn -i
+- yarn predeploy
+- if [ -f npm-debug.log ]; then cat npm-debug.log; fi
+- ncu -u
+- rm -rf yarn.lock
+- yarn predeploy
 cache:
   directories:
-    - node_modules/
-    - $HOME/.npm
+  - node_modules/
+  - "$HOME/.npm"
+env:
+  global:
+    secure: pMJSWtq2lpa8qfA3sHVaxiK3zocPMEq/iNKNRkwrm8ts4PP839WD6ITFNDkWQjet5lNjsDNQI5Ns6V97z5UR8PM8OVSLOxok8lgWmdV9x0Wo3GO2F0aC1uPMt+lpiMWG8DjpNx8DVfkEwx5xntMz84gKRhRg4ea6wfJcmcoFzoaAXcMPL+j4ryI+UkoNQP6B8zTv/CocitCWfqDxYCPn3ArKuMBXDFa1Fi/InNdEwe62LzGoTD7SSHbEM7vf6zjcSflCuRcorJYzzDhaQ7DST+cLbDX95AQIoYdlMsR9MrztHNOyTAAIm7I+GT4oS72me4rbtEcmS8bKJWBODSBKsHh4nvxH7d4ooMJzkYvh8FY2x5qhkTQB0cipHSs973iyvOsPJXPh6x78VDZUJAWOKJKQzRrK6I3IxelgvZjEXoQygTCuoHmO9cF90YY+tZEZo3edtNKn95yOQSZEdfIL7hcSHluwCzCVvYeVCTqlNbB2LI2aL7yBgqxvvGN1JgPXJbUtpj8dFZ00ZTZIc9Za4Mky+ZGyekr1XCeb0DZ5nhvvx+ARNohqMO0vW1ipVg/rIUTZvZ3g6jO7Spyy4M18W0j58eL8cXLKLLFfojeh5fEWUbruBjOkHfHbq+s+bDaVeYWKzsMy16aRDCkXyxyShORjGPINTevkkl0RtuCKMQc=
+before_deploy:
+- yarn predeploy
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: "$GITHUB_TOKEN"
+  keep-history: true
+  on:
+    branch: master
+  local-dir: dist
+  target_branch: gh-pages
+notifications:
+  email: false
