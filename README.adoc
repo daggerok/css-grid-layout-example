@@ -14,5 +14,6 @@ yarn github
 
 links:
 
-. https://parceljs.org/[parcel - coolest web application bundler ever]
-. link:https://www.youtube.com/watch?v=jV8B24rSN5o[TODO...]
+- link:https://coursehunters.net/course/postroenie-slozhnyh-maketov-c-css-grid[coursehunters.net: Построение сложных макетов c CSS Grid]
+- https://parceljs.org/[parcel - coolest web application bundler ever]
+- link:https://www.youtube.com/watch?v=jV8B24rSN5o[TODO...]
